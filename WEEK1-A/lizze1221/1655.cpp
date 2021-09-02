@@ -1,5 +1,4 @@
-#include <iostream>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
 int arr[10001];
@@ -9,6 +8,7 @@ priority_queue <int> L;
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL);
+    cout.tie(NULL);
 
     int n;
     cin >> n;
