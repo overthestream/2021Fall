@@ -14,7 +14,9 @@ int main(){
         cin >> arr[i];
     }
 
-    priority_queue <int> S, L;
+    priority_queue <int> S;
+    priority_queue <int, vector<int>, greater<int>>L;
+
     for(int i=0;i<n;i++){
         if(S.size() > L.size()) L.push(arr[i]);
         else S.push(arr[i]);
