@@ -2,32 +2,35 @@
 #include <queue>
 using namespace std;
 
-int arr[10001];
-priority_queue <int> S;
-priority_queue <int> L;
+int arr[100001];
 
 int main(){
     ios::sync_with_stdio(false);
-    cin.tie(NULL);
+    cin.tie(NULL); cout.tie(NULL);
 
     int n;
     cin >> n;
 
-    for(int i=0;i<n;i++) cin >> arr[i];
+    for(int i=0;i<n;i++) {
+        cin >> arr[i];
+    }
 
+    priority_queue <int> S, L;
     for(int i=0;i<n;i++){
         if(S.size() == L.size()) L.push(arr[i]);
         else S.push(arr[i]);
-
-        if(!S.empty()){
-            if(S.size() > L.size()) cout << S.top() <<"\n";
-            else{
+        
+        if(!S.empty() && !L.empty()){
+             if(S.top() > L.top()){ 
                 int a= S.top();
                 int b= L.top();
-                if(a<b) cout << a <<"\n";
-                else cout << b <<"\n";
+                S.pop();
+                L.pop();
+                S.push(b);
+                L.push(a);
             }
         }
+        cout << S.top() <<"\n";
     }
     return 0;
 }
