@@ -17,8 +17,8 @@ int main(){
 
     priority_queue <int> S, L;
     for(int i=0;i<n;i++){
-        if(S.size() == L.size()) L.push(arr[i]);
-        else S.push(arr[i]);
+        if(S.size() == L.size()) S.push(arr[i]);
+        else L.push(arr[i]);
         
         if(!S.empty() && !L.empty()){
              if(S.top() > L.top()){ 
