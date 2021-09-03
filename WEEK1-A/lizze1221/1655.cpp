@@ -5,7 +5,8 @@ int arr[100001];
 
 int main(){
     ios::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
     int n;
     cin >> n;
