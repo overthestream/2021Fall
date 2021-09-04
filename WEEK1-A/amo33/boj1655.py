@@ -1,42 +1,14 @@
 import sys
-from queue import PriorityQueue
 
+from bisect import bisect_left, bisect_right
 input = sys.stdin.readline
 
-lst_one = PriorityQueue()
-lst_two = PriorityQueue()
-
+lst_for_print = list()
 number = int(input())
-flag = 0 # lst 0 1 중 어떤 리스트 사용?
 mid = 0
-
-for i in range(1, number+1):
-    if flag == 0:
-        lst_one.put(int(input()))
-        mid = i // 2
-        if i % 2 == 0:
-            mid -=1
-        for j in range(i):
-            if mid == j:
-                temp = lst_one.get()
-                print(temp)
-                lst_two.put(temp)
-                continue
-            lst_two.put(lst_one.get())    
-        flag = 1
-        continue
-
-    elif flag == 1:
-        lst_two.put(int(input()))
-        mid = i // 2
-        if i % 2 == 0:
-            mid -=1
-        for j in range(i):
-            if mid == j:
-                temp = lst_two.get()
-                print(temp)
-                lst_one.put(temp)
-                continue
-            lst_one.put(lst_two.get())  
-        flag = 0
-        continue
+for i in range(1, number + 1): # 현재 시간 복잡도 : O(n^2 log n) --> PQ를 사용할 수 있는 방법이 뭐가 있을까?
+    temp_value = int(input())
+    lst_for_print.insert(bisect_left(lst_for_print, temp_value), temp_value)
+    print(lst_for_print[mid])
+    if i % 2 == 0:
+        mid += 1
