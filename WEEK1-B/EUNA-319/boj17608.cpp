@@ -14,7 +14,7 @@ int main() {
 
     for(int i=0;i<tc;i++){// 막대기의 개수만큼 입력받기
         cin>>num;
-        cin.ignore();
+        cin.ignore(); // 입력 받고 버퍼를 비워주어야 함
         stack[++top]=num;
     }
 
