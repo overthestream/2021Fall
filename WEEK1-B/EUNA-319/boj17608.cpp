@@ -3,7 +3,7 @@
 using namespace std;
 
 int top=-1;
-int stack[100000];
+int stack[100000];// 막대기의 최대 개수
 
 
 int main() {
