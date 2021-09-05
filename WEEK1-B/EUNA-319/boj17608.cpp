@@ -1,5 +1,6 @@
 #include <iostream>
 #include<algorithm>
+//#include<stack> 사용해서 풀 수도 있음
 using namespace std;
 
 int top=-1;
