@@ -1,14 +1,23 @@
 import sys
-
-from bisect import bisect_left, bisect_right
+import heapq
 input = sys.stdin.readline
 
-lst_for_print = list()
+lst_left = list()
+lst_right = list()
 number = int(input())
-mid = 0
-for i in range(1, number + 1): # 현재 시간 복잡도 : O(n^2 log n) --> PQ를 사용할 수 있는 방법이 뭐가 있을까?
-    temp_value = int(input())
-    lst_for_print.insert(bisect_left(lst_for_print, temp_value), temp_value)
-    print(lst_for_print[mid])
-    if i % 2 == 0:
-        mid += 1
+
+for _ in range(number):
+    temp = int(input())
+
+    if len(lst_right) == len(lst_left):
+        heapq.heappush(lst_left, (-temp, temp))
+    else:
+        heapq.heappush(lst_right, (temp,temp))
+
+    if len(lst_right) > 0 and lst_left[0][1] > lst_right[0][1]:
+        Max_value = heapq.heappop(lst_left)[1]
+        Min_value = heapq.heappop(lst_right)[1]
+        heapq.heappush(lst_left, (-Min_value, Min_value))
+        heapq.heappush(lst_right, (Max_value, Max_value))
+       
+    print(lst_left[0][1])
