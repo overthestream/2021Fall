@@ -29,7 +29,8 @@ void input()
     minHeap.push(tmp);
   else
     maxHeap.push(tmp);
-
+  if (!i)
+    return;
   while (minHeap.top() < maxHeap.top())
   {
     int smaller = minHeap.top();
