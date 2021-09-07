@@ -2,6 +2,8 @@
 #include <stack>
 
 using namespace std;
+typedef long long ll;
+typedef pair<ll, ll> pll;
 
 int main()
 {
@@ -11,30 +13,33 @@ int main()
   int N;
   cin >> N;
 
-  stack<int> descend;
-  int result = 0;
+  stack<pll> descend;
+  ll result = 0;
 
   for (int i = 0; i < N; ++i)
   {
-    int temp;
+    ll temp;
     cin >> temp;
 
-    if (descend.empty())
+    int ov = 1;
+    while (!descend.empty() && descend.top().first <= temp)
     {
-      descend.push(temp);
-      continue;
-    };
-
-    while (descend.top() < temp)
-    {
-      descend.pop();
-      ++result;
-      if (descend.empty())
-        break;
+      if (descend.top().first == temp)
+      {
+        result += descend.top().second;
+        ov = descend.top().second + 1;
+        descend.pop();
+      }
+      else
+      {
+        result += descend.top().second;
+        descend.pop();
+        ov = 1;
+      }
     }
-
-    result += descend.size();
-    descend.push(temp);
+    if (!descend.empty())
+      ++result;
+    descend.push(make_pair(temp, ov));
   }
   cout << result;
 }
