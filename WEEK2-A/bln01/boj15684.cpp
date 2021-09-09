@@ -104,11 +104,14 @@ void whatToAdd(int addedNum, int addNum)
     col = added[addedNum - 1].first;
     row = added[addedNum - 1].second;
   }
-  for (int i = col + 1; i < H; ++i)
-    for (int j = row + 1; j < N - 1; ++j)
+  for (int i = row; i < H; ++i)
+    for (int j = col; j < N - 1; ++j)
     {
-      added[addedNum].first = col;
-      added[addedNum].second = row;
-      whatToAdd(addedNum + 1, addNum);
+      if ((!addedNum) || (j != col && i != row && j != col + 1) && (!ladder[j][i]))
+      {
+        added[addedNum].first = j;
+        added[addedNum].second = i;
+        whatToAdd(addedNum + 1, addNum);
+      }
     }
 }
