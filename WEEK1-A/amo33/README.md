@@ -29,4 +29,19 @@ Priority Queue의 put(), get() : O(log n)
 
 Q. heappush heappop 과 같은 함수들을 많이 썼다고 시간초과가 일어나는가요
 
+# window slide 
+
+window slide 방법은 문제 푼 이후에 알게 되었는데 푸는 방식이 비슷해서 태그로 선택
+알고리즘 설명 : 이전까지 푼 문제들과는 다르게 deque를 사용했다. 최소 값을 뽑는데 PQ 방식(heapq)으로는 답이 안 나왔다.
+   최소일 값들의 후보군을 deque로 뽑아놓는다. 그리고 tuple 형태로 저장하는데 이때 
+   <pre>
+   <code>
+        (index, list[index])
+   </code>
+   </pre>
+   로 저장한다. 
+   해당 for문 인덱스와 제일 앞에 위치한 deque의 인덱스를 비교한다.
+   margin 보다 인덱스 차이가 크면 제일 popleft를 한다.  
+   이 방식을 통해서 사용하려는 list의 일부분에 알맞는 최솟값들을 출력한다.
+
 
