@@ -12,21 +12,31 @@ int main()
     int n, temp, cnt;
     bool flag;
     cin >> n;
-    cnt = n - 1;
+    cnt = 0;
     for (int i = 0; i < n; i++)
     {
         cin >> temp;
-        if (!s.empty() && s.top() < temp)
+        while (!s.empty() && s.top() < temp)
         {
             cnt++;
             s.pop();
         }
-        if (!s.empty() && s.top() == temp)
+        if (!s.empty())
         {
-            cnt++;
-            s.pop();
+            if (s.top() == temp)
+            {
+                cnt++;
+                s.pop();
+            }
+            else
+                cnt++;
         }
         s.push(temp);
+    }
+    while (!s.empty())
+    {
+        cnt++;
+        s.pop();
     }
 
     cout << cnt;
