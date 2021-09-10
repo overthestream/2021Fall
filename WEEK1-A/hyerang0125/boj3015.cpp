@@ -8,37 +8,36 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    stack<int> s;
-    int n, temp, cnt;
+    stack<pair<int, int>> s;
+    int n, temp;
+    long long cnt, same;
     bool flag;
     cin >> n;
     cnt = 0;
     for (int i = 0; i < n; i++)
     {
         cin >> temp;
-        while (!s.empty() && s.top() < temp)
+        same = 1;
+        while (!s.empty() && s.top().first < temp)
         {
-            cnt++;
+            cnt += s.top().second;
             s.pop();
         }
         if (!s.empty())
         {
-            if (s.top() == temp)
+            if (s.top().first == temp)
             {
-                cnt++;
+                cnt += s.top().second;
+                same = s.top().second + 1;
+                if (s.size() > 1)
+                    cnt++;
                 s.pop();
             }
             else
                 cnt++;
         }
-        s.push(temp);
+        s.push({temp, same});
     }
-    while (!s.empty())
-    {
-        cnt++;
-        s.pop();
-    }
-
     cout << cnt;
 
     return 0;
