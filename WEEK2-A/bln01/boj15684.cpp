@@ -4,7 +4,7 @@ using namespace std;
 
 typedef pair<int, int> pii;
 
-int ladder[9][30]; // [i][j] : i~i+1, jth height
+int ladder[12][32]; // [i][j] : i~i+1, jth height
 int N, M, H;
 pii added[3];
 bool isFound;
@@ -38,28 +38,21 @@ void check(int addNum)
     ladder[col][row] = 1;
   }
 
-  int cur[N];
   for (int i = 0; i < N; ++i)
-    cur[i] = i;
-  for (int i = 0; i < H; ++i)
   {
-    for (int j = 0; j < N - 1; ++j)
+    int cur = i;
+    for (int j = 0; j < H; ++j)
     {
-      if (ladder[j][i])
+      if (ladder[cur][j])
       {
-        for (int k = 0; k < N; ++k)
-        {
-          if (cur[k] == j)
-            cur[k] = j + 1;
-          if (cur[k] == j + 1)
-            cur[k] = j;
-        }
+        cur = cur + 1;
+      }
+      else if (cur > 0 && ladder[cur - 1][j])
+      {
+        cur = cur - 1;
       }
     }
-  }
-  for (int i = 0; i < N; ++i)
-  {
-    if (cur[i] != i)
+    if (cur != i)
       break;
     if (i == N - 1)
     {
@@ -67,6 +60,7 @@ void check(int addNum)
       isFound = true;
     }
   }
+
   for (int i = 0; i < addNum; ++i)
   {
     int col = added[i].first;
@@ -104,14 +98,18 @@ void whatToAdd(int addedNum, int addNum)
     col = added[addedNum - 1].first;
     row = added[addedNum - 1].second;
   }
-  for (int i = row; i < H; ++i)
-    for (int j = col; j < N - 1; ++j)
+  for (int i = 0; i < H; ++i)
+    for (int j = 0; j < N - 1; ++j)
     {
-      if ((!addedNum) || (j != col && i != row && j != col + 1) && (!ladder[j][i]))
+      if (i < row || (i == row && j < col))
+        continue;
+      if (!ladder[j][i])
       {
         added[addedNum].first = j;
         added[addedNum].second = i;
         whatToAdd(addedNum + 1, addNum);
+        if (isFound)
+          return;
       }
     }
 }
