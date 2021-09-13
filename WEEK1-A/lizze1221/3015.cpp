@@ -33,12 +33,10 @@ int main(){
 
                 cur.second++;
                 s.push(cur);
-
             }
             else{
                 s.push({ height, 1 });
                 result++;
-
             }
         }
     }
