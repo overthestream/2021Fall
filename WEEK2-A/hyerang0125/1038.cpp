@@ -8,29 +8,35 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int n, result;
-    bool flag;
-    string str;
+    int n, i;
+    long long result;
+    queue<long long> q;
     cin >> n;
 
-    result = 0;
-    for (int cnt = 0; cnt <= n; ++result)
+    for (int i = 0; i < 10; i++)
     {
-        flag = true;
-        str = to_string(result);
-        for (int i = 1; i < str.length(); i++)
-        {
-            if (str[i - 1] - str[i] <= 0)
-            {
-                flag = false;
-                break;
-            }
-        }
-        if (flag)
-            ++cnt;
+        q.push(i);
+        nlist.push_back(i);
     }
 
-    cout << result;
+    while (nlist.size() <= n)
+    {
+        if (q.empty())
+            break;
+
+        long long temp = q.front();
+        q.pop();
+        for (int i = 0; i < temp % 10; i++)
+        {
+            q.push(temp * 10 + i);
+            nlist.push_back(temp * 10 + i);
+        }
+    }
+
+    if (nlist[n] == 0 && n != 0)
+        cout << "-1";
+    else
+        cout << nlist[n];
 
     return 0;
 }
