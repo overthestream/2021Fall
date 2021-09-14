@@ -1,4 +1,5 @@
 //성공
+//if else가 중복되어서 하나가 없어도 가능했다.
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <cstring>
