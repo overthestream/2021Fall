@@ -1,5 +1,3 @@
-//성공
-//if else가 중복되어서 하나가 없어도 가능했다.
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <cstring>
@@ -28,19 +26,6 @@ int findIndex(long long a) {  //정확히 1씩 차이난다면 -1반환. 아니�
     return -1;
 }
 
-void resetBuf(char* str) {
-    for (int i = 0; i < strlen(str); ++i) {
-        str[i] = 0;
-    }
-}
-
-int isLast(char* temp) {
-    for (int i = 0; i < strlen(temp) - 1; ++i) {
-        if (temp[i] - 1 != temp[i + 1]) return 0;
-    }
-    return 1;
-}
-
 int get10Num(int a) {
     int res = 1;
     while (a--) {
@@ -54,7 +39,7 @@ int main() {
     scanf("%d", &N);
     int count = 0;
     long long i = 0;
-    long long answer =0;
+    long long answer = 0;
     for (; count <= N; ) {
         if (i > 9876543210) {
             printf("-1");
@@ -74,41 +59,24 @@ int main() {
             char str[11];
             sprintf(str, "%lld", i);
 
-            if (findIndex(i) == -1) { //각 자리 숫자가 1씩 차이날 때
-                
-                i += get10Num(strlen(str) - 1);
-                sprintf(str, "%lld", i);
-                if (str[0] == '1') { //자릿수가 바뀐 상황. ex) 98->100
-                    str[0] = '0' + strlen(str) - 1;
-                }
-                const int LEN = strlen(str);
-                for (int j = LEN - 1; j >= 1; --j) {
-                    str[j] = '0' + LEN - 1 - j;
-                }
-                sscanf(str, "%lld", &i);//i 컨트롤
 
-                //printf("1 : %d\n", i);
+            int add = 1;
+            const int LEN = strlen(str);
+            for (int j = 0; j < LEN - res - 1; ++j) {
+                add *= 10;
             }
-            else {
-                int add = 1;
-                const int LEN= strlen(str);
-                for (int j = 0; j < LEN - res - 1; ++j) {
-                    add *= 10; 
-                }
-                i += add;
-                sprintf(str, "%lld", i);
+            i += add;
+            sprintf(str, "%lld", i);
 
-                //필요한 자릿수 만큼 더하고 그 밑은 전부 decreasing 중 가장 작은 값으로 채워야 한다.
-                for (int j = LEN - 1, a=0; j >= res + 1; --j, ++a) {
-                    str[j] = '0' + a;
-                    //printf("in for str : %s\n", str);
-                }
-                sscanf(str, "%lld", &i);
-                //printf("2 : %d\n", i);
+            //필요한 자릿수 만큼 더하고 그 밑은 전부 decreasing 중 가장 작은 값으로 채워야 한다.
+            for (int j = LEN - 1, a = 0; j >= res + 1; --j, ++a) {
+                str[j] = '0' + a;
+                //printf("in for str : %s\n", str);
             }
-            
+            sscanf(str, "%lld", &i);
+
         }
-        
+
     }
     printf("%lld", answer);
     return 0;
