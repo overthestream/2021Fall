@@ -4,6 +4,10 @@
 
 ## 스택
 
+```cpp
+	stack<int> s;
+```
+
 ## 큐
 
 ## 우선순위큐
@@ -34,17 +38,22 @@
   priority_queue<a,vector\<a>,greater\<a>>
   (최소힙 구현 시)
   ```
-  > 만약 우선순위를 지정해주고 싶다면 greater자리에 직접 compare 구조체를 만들어서 대입해주면 된다.
-  ```cpp
-  struct cmp{
-      bool operator()(a t, a u){
-          return t.value < u.value;
-      }
-  };
-  ```
+
+````
+
+> 만약 우선순위를 지정해주고 싶다면 greater자리에 직접 compare 구조체를 만들어서 대입해주면 된다.
+
+```cpp
+struct cmp{
+    bool operator()(a t, a u){
+        return t.value < u.value;
+    }
+};
+```
 
 ### 2. 배열로 구현
 
 - 현재 노드가 n 일 때 부모노드는 n/2, 자식노드는 n\*2 또는 n\*2 + 1 로 접근한다.
 - 삽입 : 이진트리 가장 끝에 원소를 추가하고, 추가한 부분의 원소와 해당 원소의 부모 노드와 크기를 비교하고 바꿔가면서 위치를 찾아간다.
 - 삭제 : 힙의 가장 첫번째 원소를 반환하고 첫번째 위치에 힙의 가장 끝 원소를 대입한다. 그리고 힙 재정렬!
+````
