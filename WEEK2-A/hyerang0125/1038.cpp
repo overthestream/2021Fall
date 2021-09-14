@@ -2,24 +2,28 @@
 
 using namespace std;
 
+const int MAX = 1000000;
+long long nlist[MAX + 1];
+
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int n, i;
+    int n, idx;
     long long result;
     queue<long long> q;
     cin >> n;
 
+    idx = 0;
     for (int i = 0; i < 10; i++)
     {
         q.push(i);
-        nlist.push_back(i);
+        nlist[idx++] = i;
     }
 
-    while (nlist.size() <= n)
+    while (idx <= n)
     {
         if (q.empty())
             break;
@@ -29,7 +33,7 @@ int main()
         for (int i = 0; i < temp % 10; i++)
         {
             q.push(temp * 10 + i);
-            nlist.push_back(temp * 10 + i);
+            nlist[idx++] = temp * 10 + i;
         }
     }
 
