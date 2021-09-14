@@ -1,15 +1,22 @@
-# week 1
-# 포인터 배열
-# Jeong Hyemin
+#week01
 
-# 한 문장으로 입력을 받을 때 단어 기준으로 구분하기(Week1-2)
-1. getchar()을 이용하여 문자를 배열에 저장
-    - getchar()을 사용하는 이유
-        1. scanf: 단어 단위로 입력, 공백 X
-        2. gets: \n가 나올 때까지 입력, 공백 O
-                  but "Uunsafe" - 지정한 크기까지 입력받는 것이 아니라, buffer size 상관 없이 \n 나오기 전까지 입력
-        3. fgets: \n까지 buffer에 저장 / buffer size 넘어가면 읽지 않음
-2. 한 문자씩 받다가 space가 나오면 '\0' 저장
-3. 한 단어가 완성되면 단어 길이만큼의 배열 생성 후 복제
-4. 포인터 배열에 단어 배열의 첫 주소를 입력
-5. 1-4단계 반복 후, \n이 나오면 반복 종료
+#boj11279
+
+1. Priority Queue 우선순위 큐
+   = queue with priority for pop
+    - 최대 우선순위 큐: 가장 높은 우선순위를 가진 원소를 pop
+    - 최소 우선순위 큐: 가장 낮은 우선순위를 가진 원소를 pop
+
+    Time Complexity for unordered list
+    - O(1) for push, O(n) for pop
+
+2. Heap 힙
+    = Specialized tree-baesed data structure that satisfies the heap property
+    - 최대 힙: 부모의 key value가 자식 노드의 key value보다 크거나 같은 Complete Binary Tree
+    - 최소 힙: 부모의 key value가 자식 노드의 key value보다 작거나 같은 Complete Binary Tree
+
+    최대 힙이나 최소 힙은 부모, 자식 간의 key value에 순서가 정해져 있을 뿐 형제끼리는 값을 비교하지 않음
+        -> left < right, left > right의 순서는 보장되지 않음
+
+    Time Complexity
+    - O(log n) for push, pop
