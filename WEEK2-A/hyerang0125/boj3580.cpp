@@ -43,7 +43,7 @@ void isValid(int cnt)
                 cout << mapN[i][j] << " ";
             cout << "\n";
         }
-        return;
+        exit(0);
     }
 
     for (int i = 1; i <= 9; i++)
@@ -85,4 +85,5 @@ bool checkMap(int x, int y)
             }
         }
     }
+    return true;
 }
