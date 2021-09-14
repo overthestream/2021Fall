@@ -8,9 +8,9 @@
 ### 📖 매주 과제 제출 항목 
 
 1. **(필수)** 해당 주차 알고리즘에 관한 기본 개념 공부 내용
-2. **(필수)** 기초 예시 문제 풀이 및 코드 - 꼭 해당 주차 알고리즘을 이용하여 풀이
-3. 심화 문제 풀이
-4. 토론 문제
+2. **(필수)** 기초 예시 문제 풀이 및 코드(~ Silver V) - 꼭 해당 주차 알고리즘을 이용하여 풀이
+3. 심화 문제 풀이(~ Gold III)
+4. 토론 문제(Gold ~ 실전)
 
 <br>
 
@@ -25,25 +25,25 @@
 
 ### 📬 과제 제출 방법
 
-과제는 Github **StepByStep-Algorith** Organization - **2021Fall** Repository 내에 `WEEK#/beakjoonID/boj####.cc` 와 같은 형식 (주차/아이디/소스코드)으로 **Pull Request**한다. (문제를 풀면 바로 Pull Request한다) - [Pull Request 하는 방법](https://chanhuiseok.github.io/posts/git-3/)
+과제는 Github **StepByStep-Algorith** Organization - **2021Fall** Repository 내에 `WEEK#/beakjoonID/boj####.cc` 와 같은 형식 (주차/아이디/소스코드)으로 **Full Request**한다. (문제를 풀면 바로 Full Request한다) - [Full Request 하는 방법](https://chanhuiseok.github.io/posts/git-3/)
 
 과제 중 **1번 알고리즘 공부**의 경우 위 디렉토리에 `README.md` 파일에 마크다운 형식으로 작성하여 업로드해야 한다.
 
-**Commit 메시지는 자신의 아이디로 한다** (아래 기술되어 있지만 질문의 경우 [Question] 표기를 붙여 Pull Request한다.
+**Commit 메시지는 자신의 아이디로 한다** (아래 기술되어 있지만 질문의 경우 [Question] 표기를 붙여 Full Request한다.
 
-즉, 매주 정기 미팅 시작 전까지 **1번 과제를 수행한 알고리즘 정리 노트**인 `README.md` 파일과, **2번 과제에 포함된 문제 풀이 소스코드** `boj####.cc`는 **반드시 주차별 디렉토리 내 자신의 폴더** (`WEEK#/baekjoonID/`) 내에 **Pull Request가 되어있어야** 한다.
+즉, 매주 정기 미팅 시작 전까지 **1번 과제를 수행한 알고리즘 정리 노트**인 `README.md` 파일과, **2번 과제에 포함된 문제 풀이 소스코드** `boj####.cc`는 **반드시 주차별 디렉토리 내 자신의 폴더** (`WEEK#/baekjoonID/`) 내에 **Full Request가 되어있어야** 한다.
 
 단, 상대방이 피드백을 해야 하므로 미팅 직전에 몰아서 올리거나, 미팅 당일 몰아서 푸는 행위는 지양한다.
 
-**틀렸더라도 계속 Pull Request하자. 틀린 기록도 좋은 기록이며, 틀린 코드 (특히 시간초과나 메모리초과의 경우) 아이디어를 얻을 수 있고, 좋은 토론 거리가 된다.**
+**틀렸더라도 계속 Full Request하자. 틀린 기록도 좋은 기록이며, 틀린 코드 (특히 시간초과나 메모리초과의 경우) 아이디어를 얻을 수 있고, 좋은 토론 거리가 된다.**
 
 <br>
 
 ### 🎪 피드백 및 질문 하는 법
 
-상대방이 Pull Request를 보내면 해당 소스코드를 살펴보고 피드백해준다.
+상대방이 Full Request를 보내면 해당 소스코드를 살펴보고 피드백해준다.
 
-질문의 경우 Pull Request의 **Commit 메시지에 [Question]이라고 표기**한다.
+질문의 경우 Full Request의 **Commit 메시지에 [Question]이라고 표기**한다.
 
 **이 피드백이 알고리즘 스터디의 핵심이므로 열심히 진행해야 한다. 문제를 미리 풀어 공유하고, 자신이 알고 있는 지식 나눔과 궁금증을 해결하는 것이 목표이다.**
 
