@@ -14,13 +14,12 @@ int main()
 
     // n: 세로선의 개수, m: 가로선의 개수(선이 위치할 높이, 연결할 선), h: 사다리 높이
     int n, m, h, temp1, temp2;
-    vector<pair<int, int>> mlist;
     cin >> n >> m >> h;
     for (int i = 0; i < m; i++)
     {
         cin >> temp1 >> temp2;
         mlist[temp1][temp2] = 1;  // 출발
-        mlist[temp1][temp2] = -1; // 도탁
+        mlist[temp1][temp2+1] = -1; // 도착
     }
 
     // i번 출발 -> i번 도착해야 함.
