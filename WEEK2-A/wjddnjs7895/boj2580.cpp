@@ -79,4 +79,5 @@ int main() {
 		for (int j = 0; j < 9; ++j)
 			cin >> arr[i][j];
 	func(0, 0);
+
 }
