@@ -3,24 +3,24 @@
 using namespace std;
 
 int main() {
-    int arr[3];
-    for(int i = 0; i < 3; i++)
-        cin >> arr[i];
-
-    for(int i = 0; i < 3; i++){
-        int min = i;
-        for(int j = i + 1; j < 3; j++){
-            if(arr[j] < arr[min])
-                min = j;
-        }
-        int temp = arr[i];
-        arr[i] = arr[min];
-        arr[min] = temp;
+    int a, b, c;
+    cin >> a >> b >> c; // 수 세개 입력받기
+    int temp; // 임시 변수
+    if(a > b){ 
+        temp = a;
+        a = b;
+        b = temp;
     }
-
-    for(int i = 0; i < 3; i++)
-        cout << arr[i] << " ";
-
-
-    return 0;
+    if(b > c){
+        temp = b;
+        b = c;
+        c = temp;
+    }
+    if(a > b){
+        temp = a;
+        a = b;
+        b = temp;
+    }
+    cout << a << " " << b << " " << c;
 }
+
