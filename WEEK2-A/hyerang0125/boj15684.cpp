@@ -2,7 +2,59 @@
 
 using namespace std;
 
-int mlist[11][31];
+int ladder[32][32] = {0};
+int n, m, h;
+
+// 조건이 맞는지 검사하는 함수
+bool isAnswer()
+{
+    int now, right, left;
+    for (int i = 1; i <= n; i++)
+    {
+        now = i;
+        for (int j = 1; j <= h; j++)
+        {
+            left = ladder[j][now - 1];
+            right = ladder[j][now];
+
+            if (left)
+                --now;
+            if (right)
+                ++now;
+        }
+        if (now != i)
+            return false;
+    }
+    return true;
+}
+
+// 사다리를 추가하며 확인하는 함수
+int dfs(int end, int depth, int _row)
+{
+    // 깊이가(추가하는 사다리 수가) end와 같다면 검사하고 맞으면 출력 아니면 다시 탐색
+    if (depth == end)
+    {
+        if (isAnswer())
+        {
+            cout << depth;
+            exit(0);
+        }
+        return 0;
+    }
+    // _row 뒤부터 높이부터 탐색함
+    for (int row = _row; row <= h; row++)
+    {
+        for (int col = 1; col <= n; col++)
+        {
+            if (ladder[row][col - 1] || ladder[row][col] || ladder[row][col + 1])
+                continue;
+            ladder[row][col] = 1;
+            dfs(end, depth + 1, row);
+            ladder[row][col] = 0;
+        }
+    }
+    return 0;
+}
 
 int main()
 {
@@ -10,26 +62,38 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    memset(mlist, 0, sizeof(mlist));
+    int temp1, temp2;
 
-    // n: 세로선의 개수, m: 가로선의 개수(선이 위치할 높이, 연결할 선), h: 사다리 높이
-    int n, m, h, temp1, temp2;
     cin >> n >> m >> h;
     for (int i = 0; i < m; i++)
     {
         cin >> temp1 >> temp2;
-        mlist[temp1][temp2] = 1;  // 출발
-        mlist[temp1][temp2+1] = -1; // 도착
+        ladder[temp1][temp2] = 1;
     }
-
-    // i번 출발 -> i번 도착해야 함.
-    // 1번부터 사다리를 타고 가며 도착지가 1번이 되도록 사다리를 추가한다. 근데 시간 많이 걸릴거 같음.
-    // 그냥 전부 계산한 다음 사다리 하나씩 추가하면서 위치 조정하는게 더 좋을 듯.
-
-    int *arrived = new int[n];
-    for (int i = 0; i < n; i++)
+    if (isAnswer())
     {
+        cout << "0";
+        return 0;
     }
+    //추가하는 가로선 개수가 3보다 큰 값이면 -1을 출력해야 하므로 end 조건으로 사용 할 예정
+    for (int cnt = 1; cnt <= 3; cnt++)
+    {
+        for (int row = 1; row <= h; row++)
+        {
+            for (int col = 1; col <= n; col++)
+            {
+                //이미 사다리가 있다면 pass
+                if (ladder[row][col - 1] || ladder[row][col] || ladder[row][col + 1])
+                    continue;
+                //dfs 탐색
+                ladder[row][col] = 1;
+                dfs(cnt, 1, row);
+                ladder[row][col] = 0;
+            }
+        }
+    }
+    //정답이 3보다 큰 값이거나 불가능 한 경우이므로 -1을 출력
+    cout << "-1";
 
     return 0;
 }
