@@ -22,7 +22,7 @@ bool isAnswer()
             if (right)
                 ++now;
         }
-        if (now != i)
+        if ( now!= i)
             return false;
     }
     return true;
