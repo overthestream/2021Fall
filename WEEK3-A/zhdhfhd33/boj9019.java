@@ -21,7 +21,6 @@ class Unit{
 			return Main.L(str);
 		case 'R' :
 			return Main.R(str);
-		
 		default :
 			return null;
 		}
@@ -57,12 +56,21 @@ public class Main {
 	}
 
 	public static String L(String str) {
-		char ch[]=str.toCharArray();
+		char ch[]=new char[4];
+		//0으로 초기화. char배열은 생성하면 ''으로 초기화 되어있음.
+		for (int i=0; i<ch.length; ++i) {
+			ch[i]='0';
+		}
+		//str->ch 복사
+		for (int i=str.length()-1, idx=ch.length-1; i>=0; --i, --idx) {
+			ch[idx]=str.charAt(i);
+		}
+				
 		char tmp=ch[0];
-		for(int i=0; i+1<str.length(); ++i) {
+		for(int i=0; i+1<ch.length; ++i) {
 			ch[i]=ch[i+1];
 		}
-		ch[str.length()-1]=tmp;
+		ch[ch.length-1]=tmp;
 		return String.valueOf(ch);
 	}
 
@@ -102,7 +110,10 @@ public class Main {
 		
 		while (!q.isEmpty()) {
 			Unit a=q.poll();
-			if (Integer.valueOf(a.str).equals(Integer.valueOf(end))) return a; //처음부터 같을 수도 있잖아. doCommand()하기전에 검사하자.
+			if (Integer.valueOf(a.str).equals(Integer.valueOf(end))) {
+//				q.clear();//시간초과나서 시도해봤으나 똑같음.
+				return a; //처음부터 같을 수도 있잖아. doCommand()하기전에 검사하자.
+			}
 			a.str=a.doCommand();
 			
 			for (int i=0; i<command.length; ++i) {
