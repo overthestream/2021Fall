@@ -39,18 +39,18 @@ int main()
 
 bool isValid(pii left, square cur)
 {
-  if (left.first + 10 <= cur.left)
+  if (left.first + 10 < cur.left)
     return false;
   if ((left.second >= cur.top || left.second < cur.bottom) && (left.second + 10 >= cur.top || left.second + 10 < cur.bottom))
     return false;
 
   return true;
 }
-bool isValid(square cur, pii left)
+bool isValid(square cur, pii right)
 {
-  if (left.first >= cur.left)
+  if (right.first > cur.left)
     return false;
-  if ((left.second >= cur.top || left.second < cur.bottom) && (left.second + 10 >= cur.top || left.second + 10 < cur.bottom))
+  if ((right.second >= cur.top || right.second < cur.bottom) && (right.second + 10 >= cur.top || right.second + 10 < cur.bottom))
     return false;
 
   return true;
